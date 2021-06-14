@@ -1,22 +1,63 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
 
 
 function TimerField() {
-  
+
   return (
-  <React.Fragment>
-    <Typography variant="h2">00</Typography>
-    <Typography>days</Typography>
-  
-    <Typography variant="h2">00</Typography>
-    <Typography>hrs</Typography>
-  
-    <Typography variant="h2">00</Typography>
-    <Typography>min</Typography>
-  
-    <Typography variant="h2">00</Typography>
-    </React.Fragment>
+    <Grid
+      container
+      direction="row"
+    >
+      {/* days  */}
+      <Grid 
+        item 
+        container
+        direction="column"
+        alignItems="center"
+        xs={3}
+      >
+        <Typography variant="h3">00</Typography>
+        <Typography>days</Typography>
+      </Grid>
+    
+      {/* hours */}
+      <Grid 
+        item 
+        container 
+        direction="column"
+        alignItems="center"
+        xs={3}
+      >
+        <Typography variant="h3">00</Typography>
+        <Typography>hrs</Typography>
+      </Grid>
+    
+      {/* minutes */}
+      <Grid 
+        item 
+        container 
+        direction="column"
+        alignItems="center"
+        xs={3}
+      >
+        <Typography variant="h3">00</Typography>
+        <Typography>min</Typography>
+      </Grid>
+    
+      {/* seconds */}
+      <Grid 
+        item 
+        container 
+        direction="column"
+        alignItems="center"
+        xs={3}
+      >
+        <Typography variant="h3">00</Typography>
+        <Typography>sec</Typography>
+      </Grid>
+    </Grid>
   )    
 }
 

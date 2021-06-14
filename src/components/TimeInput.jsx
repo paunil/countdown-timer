@@ -1,14 +1,20 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
 import DateFnsUtils from "@date-io/date-fns"
-import AccessTimeIcon from '@material-ui/icons/AccessTime'
+import AccessTimeIcon from "@material-ui/icons/AccessTime"
 import { MuiPickersUtilsProvider, KeyboardTimePicker } from "@material-ui/pickers"
+import Grid from "@material-ui/core/Grid"
 
 
 function TimeInput() {
   
   return (
-    <React.Fragment>
+    <Grid 
+      container 
+      direction="row" 
+      justify="center"
+      alignItems="center"
+    >
       <Typography>Time:</Typography>
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -22,7 +28,7 @@ function TimeInput() {
           }}
         />
       </MuiPickersUtilsProvider>
-    </React.Fragment>  
+    </Grid>  
   )
 }
 
