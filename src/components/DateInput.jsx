@@ -5,7 +5,11 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/picker
 import Grid from "@material-ui/core/Grid"
 
 
-function DateInput() {
+function DateInput(props) {
+
+  const handleDateChange = (date) => {
+    props.setSelectedDate(date)
+  }
 
   return (
     <Grid 
@@ -24,6 +28,8 @@ function DateInput() {
             variant="inline"
             format="MM/dd/yyyy"
             margin="normal"
+            value={props.selectedDate}
+            onChange={handleDateChange}
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}

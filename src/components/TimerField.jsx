@@ -12,23 +12,27 @@ function TimerField(props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Get today's date and time
+      // get today's date and time
       const now = new Date().getTime()
+      
+      // get the count down's date and time
+      const then = props.selectedDate.getTime()
 
-      // Find the distance between now and the count down date
-      const distance = props.selectedDate - now
-
-      // Time calculations for days, hours, minutes and seconds
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000)
-
-      setDays(() => days)
-      setHours(() => hours)
-      setMinutes(() => minutes)
-      setSeconds(() => seconds)
-
+      if (then > now) {
+        // find the distance between now and the count down date 
+        const distance = then - now
+  
+        // time calculations for days, hours, minutes and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+  
+        setDays(() => days)
+        setHours(() => hours)
+        setMinutes(() => minutes)
+        setSeconds(() => seconds)
+      }
     }, 1000)
     return () => clearInterval(interval)
   }, [props.selectedDate])

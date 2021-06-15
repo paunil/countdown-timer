@@ -32,8 +32,7 @@ theme = responsiveFontSizes(theme, {
 
 function App() {
 
-  const [selectedDate, updateSelectedDate] = useState (new Date("June 31, 2021 15:37:25").getTime())
-
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
   return (
     <ThemeProvider theme={theme}>
@@ -77,12 +76,12 @@ function App() {
 
           {/* DateInput */}
           <Grid item xs={10} sm={8} md>
-            <DateInput />
+            <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
           </Grid>
 
           {/* TimeInput */}
           <Grid item xs={10} sm={8} md>          
-            <TimeInput />
+            <TimeInput selectedTime={selectedDate} setSelectedTime={setSelectedDate}/>
           </Grid>
 
           {/* SaveButton */}
