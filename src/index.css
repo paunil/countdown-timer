@@ -1,0 +1,6 @@
+html, body {
+  /* makes body fill page height, otherwise background won't work */
+  height: 100%;
+
+  background: linear-gradient(to bottom, #00c2cb 0%, #ffffff 100%);
+}

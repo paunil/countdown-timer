@@ -12,22 +12,25 @@ function TimeInput() {
     <Grid 
       container 
       direction="row" 
-      justify="center"
       alignItems="center"
     >
-      <Typography>Time:</Typography>
+      <Grid item xs={4}>
+        <Typography align="center" >Time:</Typography>
+      </Grid>
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardTimePicker
-          disableToolbar
-          variant="inline"
-          margin="normal"
-          keyboardIcon={<AccessTimeIcon />}
-          KeyboardButtonProps={{
-            'aria-label': 'change time',
-          }}
-        />
-      </MuiPickersUtilsProvider>
+      <Grid item xs={8}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardTimePicker
+            disableToolbar
+            variant="inline"
+            margin="normal"
+            keyboardIcon={<AccessTimeIcon />}
+            KeyboardButtonProps={{
+              'aria-label': 'change time',
+            }}
+          />
+        </MuiPickersUtilsProvider>
+      </Grid>
     </Grid>  
   )
 }

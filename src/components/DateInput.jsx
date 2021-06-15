@@ -11,22 +11,25 @@ function DateInput() {
     <Grid 
       container 
       direction="row" 
-      justify="center"
       alignItems="center"
     >
-      <Typography>Date:</Typography>
+      <Grid item xs={4}>
+        <Typography align="center">Date:</Typography>
+      </Grid>
 
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />  
-      </MuiPickersUtilsProvider>
+      <Grid item xs={8}>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            disableToolbar
+            variant="inline"
+            format="MM/dd/yyyy"
+            margin="normal"
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />  
+        </MuiPickersUtilsProvider>
+      </Grid>
     </Grid>  
   )
 }

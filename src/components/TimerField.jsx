@@ -18,7 +18,7 @@ function TimerField() {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h3">00</Typography>
+        <Typography variant="h2">00</Typography>
         <Typography>days</Typography>
       </Grid>
     
@@ -30,7 +30,7 @@ function TimerField() {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h3">00</Typography>
+        <Typography variant="h2">00</Typography>
         <Typography>hrs</Typography>
       </Grid>
     
@@ -42,7 +42,7 @@ function TimerField() {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h3">00</Typography>
+        <Typography variant="h2">00</Typography>
         <Typography>min</Typography>
       </Grid>
     
@@ -54,7 +54,7 @@ function TimerField() {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h3">00</Typography>
+        <Typography variant="h2">00</Typography>
         <Typography>sec</Typography>
       </Grid>
     </Grid>

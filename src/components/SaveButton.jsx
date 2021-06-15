@@ -11,7 +11,12 @@ function SaveButton() {
       direction="row" 
       justify="center"
     >
-      <Button align="center" variant="contained" >
+      <Button 
+        align="center" 
+        variant="contained" 
+        color="primary"
+        style={{color:"#000"}}
+      >
         Save
       </Button>
     </Grid>

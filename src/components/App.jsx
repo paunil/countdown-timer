@@ -2,6 +2,7 @@
 import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles"
 
 // local files
 import Header from "./Header.jsx"
@@ -12,61 +13,81 @@ import TimeInput from "./TimeInput.jsx"
 import SaveButton from "./SaveButton.jsx"
 
 
+// button color
+let theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#fff"
+    },
+  }
+})
+
+// makes header font size responsive
+theme = responsiveFontSizes(theme, {
+  breakpoints: ["sm", "md", "lg"],
+  factor: 4,
+  variants: ["h2"]
+})
+
+
 function App() {
 
   return (
-    <Grid
-      container
-      direction="row"
-      justify="space-around"
-      alignItems="center"
-      spacing={10}
-    >
-      {/* normalize css */}
-      <CssBaseline />
-      
-      {/* Header */}
-      <Grid item container justify="center" xs={12}>
-        <Header />
-      </Grid>
-
-      {/* TimerField */}
-      <Grid item xs={10} sm={8} md={6}>
-        <TimerField />
-      </Grid>
-
-      {/* Custom settings & save */}
+    <ThemeProvider theme={theme}>
       <Grid
-        item
         container
-        justify="space-between"
+        direction="row"
+        justify="space-around"
         alignItems="center"
-        xs={12}
-        md={10}
-        spacing={2}
-      >    
-        {/* TitleInput */}
-        <Grid item container xs={12} md={3}>
-          <TitleInput />
+        spacing={10}
+      >
+        {/* normalize css */}
+        <CssBaseline />
+        
+        {/* Header */}
+        <Grid item container justify="center" xs={12}>
+          <Header />
         </Grid>
 
-        {/* DateInput */}
-        <Grid item container xs={12} md={3}>
-          <DateInput />
+        {/* TimerField */}
+        <Grid item xs={10} sm={8} md={6}>
+          <TimerField />
         </Grid>
 
-        {/* TimeInput */}
-        <Grid item container xs={12} md={3}>          
-          <TimeInput />
+        {/* Custom settings & save */}
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          spacing={4}
+          xs={12}
+          md={8}
+          // md={10}
+        >    
+          {/* TitleInput */}
+          <Grid item xs={10} sm={8} md>
+            <TitleInput />
+          </Grid>
+
+          {/* DateInput */}
+          <Grid item xs={10} sm={8} md>
+            <DateInput />
+          </Grid>
+
+          {/* TimeInput */}
+          <Grid item xs={10} sm={8} md>          
+            <TimeInput />
+          </Grid>
+
+          {/* SaveButton */}
+          <Grid item xs={10} sm={8} md={2}>  
+            <SaveButton />
+          </Grid>
         </Grid>
 
-        {/* SaveButton */}
-        <Grid item container xs={12} md={3}>  
-          <SaveButton />
-        </Grid>
       </Grid>
-
-    </Grid>
+    </ThemeProvider>
   )
 }
 

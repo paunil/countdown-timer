@@ -10,14 +10,18 @@ function TitleInput() {
     <Grid 
       container 
       direction="row" 
-      justify="center"
       alignItems="center"
     >
-      <Typography>Title:</Typography>
-      <TextField 
-        variant="standard" 
-        size="small"
-      />
+      <Grid item xs={4}>      
+        <Typography align="center">Title:</Typography>
+      </Grid>
+
+      <Grid item xs={8}>      
+        <TextField
+          variant="standard" 
+          size="small"
+        />
+      </Grid>
     </Grid>
   )
 }
