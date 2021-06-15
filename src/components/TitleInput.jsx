@@ -4,7 +4,12 @@ import TextField from "@material-ui/core/TextField"
 import Grid from "@material-ui/core/Grid"
 
 
-function TitleInput() {
+function TitleInput(props) {
+
+  const handleInputChange = (event) => {
+    const newValue = event.target.value === '' ? '' : event.target.value
+    props.setTitleInput(newValue)
+  }
 
   return (
     <Grid 
@@ -20,6 +25,7 @@ function TitleInput() {
         <TextField
           variant="standard" 
           size="small"
+          onChange={handleInputChange}
         />
       </Grid>
     </Grid>

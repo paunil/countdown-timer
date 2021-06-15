@@ -3,6 +3,7 @@ import { React, useState } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles"
+import Hidden from "@material-ui/core/Hidden"
 
 // local files
 import Header from "./Header.jsx"
@@ -32,7 +33,26 @@ theme = responsiveFontSizes(theme, {
 
 function App() {
 
+  
+  // query parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const title = urlParams.get('title')
+  const date = urlParams.get('date')
+  const savedDate = title !== null && date !== null
+  
   const [selectedDate, setSelectedDate] = useState(new Date())
+
+  const [titleInput, setTitleInput] = useState()
+
+  const saveButtonCallback = () => {
+    console.log(titleInput);
+    console.log(selectedDate);
+    const url = new URL(window.location.href)
+    url.searchParams.set('title', titleInput)
+    url.searchParams.set('date', selectedDate.getTime())
+    window.location.assign(url.search)
+  }
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -48,47 +68,53 @@ function App() {
         
         {/* Header */}
         <Grid item container justify="center" xs={12}>
-          <Header />
+          <Header title={ savedDate ? title : "Countdown Timer" }/>
         </Grid>
 
         {/* TimerField */}
         <Grid item xs={10} sm={8} md={6}>
           <TimerField 
-            selectedDate={selectedDate}
+            selectedDate={savedDate ? new Date(Number(date)) : new Date()}
           />
         </Grid>
 
         {/* Custom settings & save */}
-        <Grid
-          item
-          container
-          justify="center"
-          alignItems="center"
-          spacing={4}
-          xs={12}
-          md={8}
-          // md={10}
-        >    
-          {/* TitleInput */}
-          <Grid item xs={10} sm={8} md>
-            <TitleInput />
-          </Grid>
+        <Hidden xsUp={savedDate}>
+          <Grid
+            item
+            container
+            justify="center"
+            alignItems="center"
+            spacing={4}
+            xs={12}
+            md={8}
+            // md={10}
+          >    
+            {/* TitleInput */}
+            <Grid item xs={10} sm={8} md>
+              <TitleInput setTitleInput={setTitleInput} />
+            </Grid>
 
-          {/* DateInput */}
-          <Grid item xs={10} sm={8} md>
-            <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
-          </Grid>
+            {/* DateInput */}
+            <Grid item xs={10} sm={8} md>
+              <DateInput 
+                selectedDate={selectedDate} 
+                setSelectedDate={setSelectedDate}/>
+            </Grid>
 
-          {/* TimeInput */}
-          <Grid item xs={10} sm={8} md>          
-            <TimeInput selectedTime={selectedDate} setSelectedTime={setSelectedDate}/>
-          </Grid>
+            {/* TimeInput */}
+            <Grid item xs={10} sm={8} md>          
+              <TimeInput 
+                selectedTime={selectedDate} 
+                setSelectedTime={setSelectedDate}/>
+            </Grid>
 
-          {/* SaveButton */}
-          <Grid item xs={10} sm={8} md={2}>  
-            <SaveButton />
+            {/* SaveButton */}
+            <Grid item xs={10} sm={8} md={2}>  
+              <SaveButton saveButtonCallback={saveButtonCallback} />
+            </Grid>
           </Grid>
-        </Grid>
+        </Hidden>
 
       </Grid>
     </ThemeProvider>

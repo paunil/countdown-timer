@@ -4,29 +4,43 @@ import Grid from "@material-ui/core/Grid"
 
 
 function TimerField(props) {
+  
+  
+  const calculateDistanceParts = (distance) => {
+    if (distance > 0) {
+      // time calculations for days, hours, minutes and seconds
+      return [
+        Math.floor(distance / (1000 * 60 * 60 * 24)),
+        Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        Math.floor((distance % (1000 * 60)) / 1000)
+      ]
+    } else {
+      return [0, 0, 0, 0]
+    }
+  }
 
-  const [days, setDays] = useState(0)
-  const [hours, setHours] = useState(0)
-  const [minutes, setMinutes] = useState(0)
-  const [seconds, setSeconds] = useState(0)
+  const initialDistance = props.selectedDate.getTime() - new Date().getTime()
+  const distanceParts = calculateDistanceParts(initialDistance)
+
+  const [days, setDays] = useState(distanceParts[0])
+  const [hours, setHours] = useState(distanceParts[1])
+  const [minutes, setMinutes] = useState(distanceParts[2])
+  const [seconds, setSeconds] = useState(distanceParts[3])
 
   useEffect(() => {
     const interval = setInterval(() => {
+      
       // get today's date and time
       const now = new Date().getTime()
       
-      // get the count down's date and time
+      // get count down's date and time
       const then = props.selectedDate.getTime()
 
       if (then > now) {
-        // find the distance between now and the count down date 
+        // find the distance between now and count down date 
         const distance = then - now
-  
-        // time calculations for days, hours, minutes and seconds
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24))
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+        const [days, hours, minutes, seconds] = calculateDistanceParts(distance)
   
         setDays(() => days)
         setHours(() => hours)

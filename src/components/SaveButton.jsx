@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button"
 import Grid from "@material-ui/core/Grid"
 
 
-function SaveButton() {
+function SaveButton(props) {
 
   return (
     <Grid 
@@ -16,6 +16,7 @@ function SaveButton() {
         variant="contained" 
         color="primary"
         style={{color:"#000"}}
+        onClick={props.saveButtonCallback}
       >
         Save
       </Button>

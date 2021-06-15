@@ -2,14 +2,14 @@ import React from "react"
 import Typography from "@material-ui/core/Typography"
 
 
-function Header() {
+function Header(props) {
 
   return (
     <Typography 
       variant="h2"
       style={{marginTop: "8%"}}
     >
-      Countdown Timer
+      {props.title}
     </Typography>
   )
 }
