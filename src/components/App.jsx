@@ -1,5 +1,5 @@
 // libraries
-import React from "react"
+import { React, useState } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles"
@@ -32,6 +32,9 @@ theme = responsiveFontSizes(theme, {
 
 function App() {
 
+  const [selectedDate, updateSelectedDate] = useState (new Date("June 31, 2021 15:37:25").getTime())
+
+
   return (
     <ThemeProvider theme={theme}>
       <Grid
@@ -51,7 +54,9 @@ function App() {
 
         {/* TimerField */}
         <Grid item xs={10} sm={8} md={6}>
-          <TimerField />
+          <TimerField 
+            selectedDate={selectedDate}
+          />
         </Grid>
 
         {/* Custom settings & save */}
