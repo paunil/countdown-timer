@@ -16,7 +16,7 @@ function TimerField(props) {
         Math.floor((distance % (1000 * 60)) / 1000)
       ]
     } else {
-      return [0, 0, 0, 0]
+      return ["00", "00", "00", "00"]
     }
   }
 
@@ -65,7 +65,7 @@ function TimerField(props) {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h2">{days}</Typography>
+        <Typography variant="h2" color="primary">{days}</Typography>
         <Typography>days</Typography>
       </Grid>
 
@@ -77,7 +77,7 @@ function TimerField(props) {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h2">{hours}</Typography>
+        <Typography variant="h2" color="primary">{hours}</Typography>
         <Typography>hrs</Typography>
       </Grid>
 
@@ -89,7 +89,7 @@ function TimerField(props) {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h2">{minutes}</Typography>
+        <Typography variant="h2" color="primary">{minutes}</Typography>
         <Typography>min</Typography>
       </Grid>
 
@@ -101,7 +101,7 @@ function TimerField(props) {
         alignItems="center"
         xs={3}
       >
-        <Typography variant="h2">{seconds}</Typography>
+        <Typography variant="h2" color="primary">{seconds}</Typography>
         <Typography>sec</Typography>
       </Grid>
     </Grid>

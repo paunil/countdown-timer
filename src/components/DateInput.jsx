@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography"
 import DateFnsUtils from "@date-io/date-fns"
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers"
 import Grid from "@material-ui/core/Grid"
+import Hidden from "@material-ui/core/Hidden"
 
 
 function DateInput(props) {
@@ -15,24 +16,28 @@ function DateInput(props) {
     <Grid 
       container 
       direction="row" 
+      justify="center"
       alignItems="center"
     >
-      <Grid item xs={4}>
-        <Typography align="center">Date:</Typography>
-      </Grid>
+      <Hidden mdUp>
+        <Grid item xs={4}>
+          <Typography>Date:</Typography>
+        </Grid>
+      </Hidden>
 
-      <Grid item xs={8}>
+      <Grid item xs={8} md={12}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <KeyboardDatePicker
             disableToolbar
             variant="inline"
             format="MM/dd/yyyy"
-            margin="normal"
+            margin="none"
             value={props.selectedDate}
             onChange={handleDateChange}
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}
+            fullWidth={true}
           />  
         </MuiPickersUtilsProvider>
       </Grid>

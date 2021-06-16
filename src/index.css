@@ -4,3 +4,11 @@ html, body {
 
   background: linear-gradient(to bottom, #00c2cb 0%, #ffffff 100%);
 }
+
+#app-grid>.MuiGrid-item>.MuiPaper-root {
+  padding: 10%;
+}
+
+#custom-settings {
+  padding-top: 10%;
+}

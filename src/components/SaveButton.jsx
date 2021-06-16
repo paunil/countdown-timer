@@ -15,7 +15,8 @@ function SaveButton(props) {
         align="center" 
         variant="contained" 
         color="primary"
-        style={{color:"#000"}}
+        fullWidth={true}
+        style={{color:"#fff"}}
         onClick={props.saveButtonCallback}
       >
         Save

@@ -7,7 +7,7 @@ function Header(props) {
   return (
     <Typography 
       variant="h2"
-      style={{marginTop: "8%"}}
+      style={{margin: "8% 0% 4% 0%", color: "white"}}
     >
       {props.title}
     </Typography>
